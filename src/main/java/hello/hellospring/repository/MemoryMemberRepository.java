@@ -1,6 +1,6 @@
 package hello.hellospring.repository;
 
-import hello.hellospring.damain.Member;
+import hello.hellospring.domain.Member;
 
 import java.util.*;
 
@@ -14,7 +14,6 @@ public class MemoryMemberRepository implements MemberRepository {
         member.setId(++sequence);
         store.put(member.getId(), member);
         return member;
-
     }
 
     @Override
@@ -32,5 +31,9 @@ public class MemoryMemberRepository implements MemberRepository {
     @Override
     public List<Member> findAll() {
         return new ArrayList<>(store.values());
+    }
+
+    public void clearStore() {
+        store.clear();
     }
 }
